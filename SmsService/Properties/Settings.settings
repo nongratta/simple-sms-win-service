@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SmsService.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="EmailHost" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mail.tbss.lc</Value>
+    </Setting>
+    <Setting Name="EmailLogin" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mercury@tbss.ru</Value>
+    </Setting>
+    <Setting Name="SmtpPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="EmailPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">sdmn3NH*</Value>
+    </Setting>
+    <Setting Name="NotificatedEmail" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gorin@tbss.ru</Value>
+    </Setting>
+    <Setting Name="UpdateTimeInterval" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="SmsLogin" Type="System.String" Scope="User">
+      <Value Profile="(Default)">TBSS_sms</Value>
+    </Setting>
+    <Setting Name="SmsPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">jk3Z7YQMhr</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

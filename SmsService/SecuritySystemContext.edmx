@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SecuritySystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="SmsTasks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="1000" />
+          <Property Name="Phone" Type="varchar" MaxLength="1000" />
+          <Property Name="FirstName" Type="varchar" MaxLength="1000" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="1000" />
+          <Property Name="LastName" Type="varchar" MaxLength="1000" />
+          <Property Name="OnEnter" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SmsTasksByPassPoints">
+          <Key>
+            <PropertyRef Name="SmsTaskId" />
+            <PropertyRef Name="PassPointId" />
+          </Key>
+          <Property Name="SmsTaskId" Type="int" Nullable="false" />
+          <Property Name="PassPointId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SecuritySystem.dbo.vTrafficByUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vTrafficByUsers">
+          
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="UserId" Type="int" />
+          <Property Name="OriginalId" Type="int" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="GroupName" Type="varchar" MaxLength="100" />
+          <Property Name="datetime" Type="datetime" />
+          <Property Name="Description" Type="varchar" MaxLength="150" />
+          <Property Name="Door" Type="int" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="IsEntry" Type="bit" />
+          <Property Name="FromCodas" Type="bit" />
+          <Property Name="DoorIsEntry" Type="bit" />
+          <Property Name="DoorDesc" Type="varchar" MaxLength="300" />
+          <Property Name="Alias" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <Association Name="FK_SmsTasksByPassPoints_SmsTasks">
+          <End Role="SmsTasks" Type="Self.SmsTasks" Multiplicity="1" />
+          <End Role="SmsTasksByPassPoints" Type="Self.SmsTasksByPassPoints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SmsTasks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SmsTasksByPassPoints">
+              <PropertyRef Name="SmsTaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SecuritySystemModelStoreContainer">
+          <EntitySet Name="SmsTasks" EntityType="Self.SmsTasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SmsTasksByPassPoints" EntityType="Self.SmsTasksByPassPoints" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vTrafficByUsers" EntityType="Self.vTrafficByUsers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vTrafficByUsers].[UserId] AS [UserId], 
+    [vTrafficByUsers].[OriginalId] AS [OriginalId], 
+    [vTrafficByUsers].[LastName] AS [LastName], 
+    [vTrafficByUsers].[FirstName] AS [FirstName], 
+    [vTrafficByUsers].[MiddleName] AS [MiddleName], 
+    [vTrafficByUsers].[GroupId] AS [GroupId], 
+    [vTrafficByUsers].[GroupName] AS [GroupName], 
+    [vTrafficByUsers].[datetime] AS [datetime], 
+    [vTrafficByUsers].[Description] AS [Description], 
+    [vTrafficByUsers].[Door] AS [Door], 
+    [vTrafficByUsers].[id] AS [id], 
+    [vTrafficByUsers].[IsEntry] AS [IsEntry], 
+    [vTrafficByUsers].[FromCodas] AS [FromCodas], 
+    [vTrafficByUsers].[DoorIsEntry] AS [DoorIsEntry], 
+    [vTrafficByUsers].[DoorDesc] AS [DoorDesc], 
+    [vTrafficByUsers].[Alias] AS [Alias]
+    FROM [dbo].[vTrafficByUsers] AS [vTrafficByUsers]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_SmsTasksByPassPoints_SmsTasks" Association="Self.FK_SmsTasksByPassPoints_SmsTasks">
+            <End Role="SmsTasks" EntitySet="SmsTasks" />
+            <End Role="SmsTasksByPassPoints" EntitySet="SmsTasksByPassPoints" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SecuritySystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="vTrafficByUser">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="OriginalId" Type="Int32" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="GroupName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="datetime" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Door" Type="Int32" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="IsEntry" Type="Boolean" />
+          <Property Name="FromCodas" Type="Boolean" />
+          <Property Name="DoorIsEntry" Type="Boolean" />
+          <Property Name="DoorDesc" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Alias" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="SecuritySystemContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="vTrafficByUsers" EntityType="Self.vTrafficByUser" />
+          <EntitySet Name="SmsTasks" EntityType="SecuritySystemModel.SmsTask" />
+          <EntitySet Name="SmsTasksByPassPoints" EntityType="SecuritySystemModel.SmsTasksByPassPoint" />
+          <AssociationSet Name="FK_SmsTasksByPassPoints_SmsTasks" Association="SecuritySystemModel.FK_SmsTasksByPassPoints_SmsTasks">
+            <End Role="SmsTask" EntitySet="SmsTasks" />
+            <End Role="SmsTasksByPassPoint" EntitySet="SmsTasksByPassPoints" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="SmsTask">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SmsTasksByPassPoints" Relationship="SecuritySystemModel.FK_SmsTasksByPassPoints_SmsTasks" FromRole="SmsTask" ToRole="SmsTasksByPassPoint" />
+          <Property Name="OnEnter" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SmsTasksByPassPoint">
+          <Key>
+            <PropertyRef Name="SmsTaskId" />
+            <PropertyRef Name="PassPointId" />
+          </Key>
+          <Property Name="SmsTaskId" Type="Int32" Nullable="false" />
+          <Property Name="PassPointId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SmsTask" Relationship="SecuritySystemModel.FK_SmsTasksByPassPoints_SmsTasks" FromRole="SmsTasksByPassPoint" ToRole="SmsTask" />
+        </EntityType>
+        <Association Name="FK_SmsTasksByPassPoints_SmsTasks">
+          <End Type="SecuritySystemModel.SmsTask" Role="SmsTask" Multiplicity="1" />
+          <End Type="SecuritySystemModel.SmsTasksByPassPoint" Role="SmsTasksByPassPoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SmsTask">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SmsTasksByPassPoint">
+              <PropertyRef Name="SmsTaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SecuritySystemModelStoreContainer" CdmEntityContainer="SecuritySystemContext">
+          <EntitySetMapping Name="vTrafficByUsers">
+            <EntityTypeMapping TypeName="SecuritySystemModel.vTrafficByUser">
+              <MappingFragment StoreEntitySet="vTrafficByUsers">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OriginalId" ColumnName="OriginalId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Door" ColumnName="Door" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="IsEntry" ColumnName="IsEntry" />
+                <ScalarProperty Name="FromCodas" ColumnName="FromCodas" />
+                <ScalarProperty Name="DoorIsEntry" ColumnName="DoorIsEntry" />
+                <ScalarProperty Name="DoorDesc" ColumnName="DoorDesc" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SmsTasks">
+            <EntityTypeMapping TypeName="SecuritySystemModel.SmsTask">
+              <MappingFragment StoreEntitySet="SmsTasks">
+                <ScalarProperty Name="OnEnter" ColumnName="OnEnter" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SmsTasksByPassPoints">
+            <EntityTypeMapping TypeName="SecuritySystemModel.SmsTasksByPassPoint">
+              <MappingFragment StoreEntitySet="SmsTasksByPassPoints">
+                <ScalarProperty Name="PassPointId" ColumnName="PassPointId" />
+                <ScalarProperty Name="SmsTaskId" ColumnName="SmsTaskId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

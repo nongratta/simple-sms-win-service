@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="523eedd9f2344166b26c2b34f613d83e" Name="Diagram1">
+        <EntityTypeShape EntityType="SecuritySystemModel.vTrafficByUser" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecuritySystemModel.SmsTask" Width="1.5" PointX="3.375" PointY="1" />
+        <EntityTypeShape EntityType="SecuritySystemModel.SmsTasksByPassPoint" Width="1.5" PointX="5.625" PointY="1.375" />
+        <AssociationConnector Association="SecuritySystemModel.FK_SmsTasksByPassPoints_SmsTasks" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
