@@ -34,8 +34,8 @@
             // serviceProcessInstaller1
             // 
             this.serviceProcessInstaller1.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
-            this.serviceProcessInstaller1.Password = "Fehibo16";
-            this.serviceProcessInstaller1.Username = "TBSS\\BABAKHIN";
+            this.serviceProcessInstaller1.Password = (System.Environment.GetEnvironmentVariable("SERVICE_PASSWORD") ?? string.Empty);
+            this.serviceProcessInstaller1.Username = (System.Environment.GetEnvironmentVariable("SERVICE_USERNAME") ?? string.Empty);
             // 
             // serviceInstaller1
             // 

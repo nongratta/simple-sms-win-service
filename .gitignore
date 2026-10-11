@@ -187,3 +187,14 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
+# Приватные настройки, секреты и локальные данные.
+GitExtensions.settings
+.idea/
+.dotnet/
+appsettings.Local.json
+appsettings.*.Local.json
+*.local.config
+*.pubxml.user
+*.p12
+*.key
